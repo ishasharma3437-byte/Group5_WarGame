@@ -7,13 +7,19 @@ package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
+ * A concrete class that represents any grouping of cards for a Game. HINT, you
+ * might want to subclass this more than once. The group of cards has a maximum
+ * size attribute which is flexible for reuse.
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @modifier Diya Sharma
+ * @modifier Razia Kauser
+ * @modifier Mohammed Fahad Ahmed
+ * @modifier Harsh Saini 
  */
 public class GroupOfCards {
 
@@ -23,6 +29,7 @@ public class GroupOfCards {
 
     public GroupOfCards(int size) {
         this.size = size;
+        this.cards = new ArrayList<>();
     }
 
     /**
@@ -51,5 +58,38 @@ public class GroupOfCards {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public boolean isEmpty() {
+        return cards.isEmpty();
+    }
+
+    public void addCardToBottom(Card c) {
+        if (c == null) {
+            return;
+        }
+        cards.add(c);
+    }
+
+    public Card drawTopCard() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.remove(0);
+    }
+
+    public void addAll(GroupOfCards other) {
+        if (other == null) {
+            return;
+        }
+        this.cards.addAll(other.cards);
+        other.cards.clear();
+    }
+
+ 
+
+    public int getCount() {
+        return cards.size();
+    }
+
 
 }//end class
